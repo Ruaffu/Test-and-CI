@@ -31,4 +31,32 @@ public class UserMapper {
             }
             return null;
     }
+
+    public User getUserByID(int id) {
+
+        try (Connection connection = DBConnector.connection()) {
+
+            String sql = "SELECT * FROM usertable WHERE id=?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    String fname = rs.getString("fname");
+                    String lname = rs.getString("lname");
+                    String pw = rs.getString("pw");
+                    String phone = rs.getString("phone");
+                    String address = rs.getString("address");
+
+                    return new User(fname, lname, pw, phone, address);
+                }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        return null;
+    }
 }

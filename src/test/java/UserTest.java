@@ -60,4 +60,16 @@ public class UserTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void getSpecificUserInfoTest(){
+        UserMapper userMapper = new UserMapper();
+        User user = userMapper.getUserByID(1);
+        assertEquals("Hans", user.getfName());
+        assertEquals("Hansen", user.getlName());
+        assertEquals("Hemmelig123", user.getPassword());
+        assertEquals("40404040", user.getPhone());
+        assertEquals("Rolighedsvej 3", user.getAddress());
+
+    }
 }
