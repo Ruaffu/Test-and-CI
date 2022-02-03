@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="test-and-ci:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/test_and_ci_war</output-path>
+    <root id="root" />
+  </artifact>
+</component>
