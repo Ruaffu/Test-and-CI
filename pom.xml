@@ -8,7 +8,7 @@
     <artifactId>test-and-ci</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>ci-demo1</name>
+    <name>test-and-ci-demo</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
