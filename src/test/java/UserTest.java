@@ -1,3 +1,4 @@
+import entities.User;
 import org.junit.jupiter.api.Test;
 import persistence.DBConnector;
 import persistence.UserMapper;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,6 +20,8 @@ public class UserTest {
         Connection con = null;
         try {
             con = DBConnector.connection();
+            String dropTable = "DROP TABLE usertable";
+            con.prepareStatement(dropTable).executeUpdate();
             String createTable = "CREATE TABLE IF NOT EXISTS `startcode_test`.`usertable` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `fname` VARCHAR(45) NULL,\n" +
@@ -48,12 +52,12 @@ public class UserTest {
     }
 
     @Test
-    public void listAllUsersTest(){
+    public void listAllUserNamesTest(){
         UserMapper userMapper = new UserMapper();
-        ArrayList<String> expected = new ArrayList();
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("Hans");
         ArrayList<String> actual = userMapper.getAllUserNames();
         assertEquals(expected, actual);
-
 
     }
 }
