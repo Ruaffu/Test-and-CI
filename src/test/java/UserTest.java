@@ -84,4 +84,9 @@ public class UserTest {
         assertEquals("Rolighedsvej 3", user.getAddress());
 
     }
+
+    @Test
+    public void editUserDetailsTest(){
+        UserMapper userMapper = new UserMapper();
+    }
 }
