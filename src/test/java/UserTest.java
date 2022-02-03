@@ -1,9 +1,14 @@
 import org.junit.jupiter.api.Test;
+import persistence.DBConnector;
+import persistence.UserMapper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest {
 
@@ -44,6 +49,11 @@ public class UserTest {
 
     @Test
     public void listAllUsersTest(){
+        UserMapper userMapper = new UserMapper();
+        ArrayList<String> expected = new ArrayList();
+        ArrayList<String> actual = userMapper.getAllUserNames();
+        assertEquals(expected, actual);
+
 
     }
 }
