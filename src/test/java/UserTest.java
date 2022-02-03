@@ -20,8 +20,6 @@ public class UserTest {
         Connection con = null;
         try {
             con = DBConnector.connection();
-            String dropTable = "DROP TABLE usertable";
-            con.prepareStatement(dropTable).executeUpdate();
             String createTable = "CREATE TABLE IF NOT EXISTS `startcode_test`.`usertable` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `fname` VARCHAR(45) NULL,\n" +
@@ -49,6 +47,19 @@ public class UserTest {
 
     @org.junit.jupiter.api.AfterEach
     void tearDown() {
+        Connection con = null;
+
+        try {
+            DBConnector.setConnection(null);
+            con = DBConnector.connection();
+            String dropTable = "DROP TABLE usertable";
+            Statement stmt = con.createStatement();
+            Boolean rs = stmt.execute(dropTable);
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
 
     }
 
